@@ -18,13 +18,14 @@ export const ValidationSchemaRegister = yup
     lastname: yup.string().required(errorMessages.requiredField),
     password: yup
       .string()
+      .required(errorMessages.requiredField)
       .min(6, errorMessages.password.min)
       .max(20, errorMessages.password.max)
-      .matches(regexPassword, errorMessages.password.format)
-      .required(errorMessages.requiredField),
+      .matches(regexPassword, errorMessages.password.format),
     passwordVerification: yup
       .string()
-      .oneOf([yup.ref("password")], errorMessages.passwordVerification.format),
+      .oneOf([yup.ref("password")], errorMessages.passwordVerification.format)
+      .required(errorMessages.requiredField),
     phone: yup
       .string()
       .matches(regexOnlyNumbers, errorMessages.phone.format)

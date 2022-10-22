@@ -49,8 +49,6 @@ const InputText: FC<Props> = ({
       sx={{
         position: "relative",
         paddingY: "5px",
-        display: "flex",
-        alignItems: "center",
       }}>
       <TextField
         onChange={onChange}
@@ -74,6 +72,7 @@ const InputText: FC<Props> = ({
           sx={{
             position: "absolute",
             right: "2px",
+            top: "15px",
           }}>
           {showPassword ? (
             <VisibilityOffOutlinedIcon fontSize="small" />
