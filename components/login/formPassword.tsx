@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import InputText from "../InputText";
+import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
 import ButtonsForm from "./buttonsForm";
@@ -12,8 +12,7 @@ export type formPasswordProps = {
   email: string;
 };
 
-const FormPassword: FC<formPasswordProps> = ({form, email}) => {
-
+const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
   const methods = useForm<FormPasswordType>({
     resolver: yupResolver(ValidationSchemaPassword),
     defaultValues: {
@@ -40,7 +39,7 @@ const FormPassword: FC<formPasswordProps> = ({form, email}) => {
           <Typography m={2}>Ingresá tu contraseña</Typography>
           <FormProvider {...methods}>
             <InputText type="password" name="password" />
-            <ButtonsForm form={form} handleNext={handleSubmit(onSubmit)}/>
+            <ButtonsForm form={form} handleNext={handleSubmit(onSubmit)} />
           </FormProvider>
         </form>
       </Box>

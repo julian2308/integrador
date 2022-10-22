@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import FormRegister from "grupo-04/components/register/formRegister.component";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -11,7 +12,7 @@ const Register: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Typography>Register</Typography>
+      <FormRegister />
     </>
   );
 };
