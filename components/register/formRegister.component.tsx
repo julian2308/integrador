@@ -3,6 +3,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormRegisterType, ValidationSchemaRegister } from "./regiterSchema";
+import { userService } from "grupo-04/services/User/user.service";
+import { useRouter } from "next/router";
+import { log } from "console";
 
 const FormRegister = () => {
   const methods = useForm<FormRegisterType>({
@@ -19,9 +22,22 @@ const FormRegister = () => {
     },
   });
   const { handleSubmit } = methods;
+  const router = useRouter();
 
-  const onSubmit = (data: FormRegisterType) => {
-    console.log(data);
+  const onSubmit = async (data: FormRegisterType) => {
+    const response = await userService.register(data);
+
+    console.log(response.response.status);
+
+    if (response.response.status === 200) {
+      router.push("/registro-exitoso", undefined, { shallow: true });
+    } else if (response.response.status === 409) {
+      console.log(response);
+    } else if (response.response.status === 500) {
+      console.log(response);
+    } else {
+      console.log(response);
+    }
   };
 
   return (
