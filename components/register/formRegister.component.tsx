@@ -1,16 +1,18 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Alert, Box, Button, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormRegisterType, ValidationSchemaRegister } from "./regiterSchema";
 import { userService } from "grupo-04/services/User/user.service";
 import { useRouter } from "next/router";
-import { log } from "console";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { useState } from "react";
 
 const FormRegister = () => {
   const methods = useForm<FormRegisterType>({
     resolver: yupResolver(ValidationSchemaRegister),
     mode: "all",
+
     defaultValues: {
       dni: "",
       email: "",
@@ -21,22 +23,22 @@ const FormRegister = () => {
       phone: "",
     },
   });
-  const { handleSubmit } = methods;
+  const { formState, handleSubmit } = methods;
   const router = useRouter();
+  const [error, setError] = useState<string>("");
+  const { isSubmitting } = formState;
 
   const onSubmit = async (data: FormRegisterType) => {
-    const response = await userService.register(data);
+    setError("");
 
-    console.log(response.response.status);
+    const response = await userService.register(data);
 
     if (response.response.status === 200) {
       router.push("/registro-exitoso", undefined, { shallow: true });
     } else if (response.response.status === 409) {
-      console.log(response);
-    } else if (response.response.status === 500) {
-      console.log(response);
+      setError("El email ingresado ya esta registrado.");
     } else {
-      console.log(response);
+      setError("Ha ocurrido un error, vuelva a intentarlo.");
     }
   };
 
@@ -44,6 +46,7 @@ const FormRegister = () => {
     <>
       <Box
         display="flex"
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
         minHeight="100vh">
@@ -69,15 +72,25 @@ const FormRegister = () => {
                 label="Confirmar contraseña*"
               />
               <InputText name="phone" label="Télefono*" />
-              <Button
+              <LoadingButton
+                loading={isSubmitting}
                 onClick={handleSubmit(onSubmit)}
                 variant="contained"
                 sx={{ height: "56px", marginTop: "5px" }}>
                 Crear cuenta
-              </Button>
+              </LoadingButton>
             </Box>
           </FormProvider>
         </form>
+        {error !== "" && (
+          <Alert
+            severity="error"
+            sx={{
+              marginTop: "30px",
+            }}>
+            {error}
+          </Alert>
+        )}
       </Box>
     </>
   );
