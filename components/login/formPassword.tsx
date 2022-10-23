@@ -6,6 +6,7 @@ import InputText from "../InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
 import ButtonsForm from "./buttonsForm";
+import { LoginPost } from "grupo-04/services/login.service";
 
 export type formPasswordProps = {
   form: number;
@@ -22,8 +23,8 @@ const FormPassword: FC<formPasswordProps> = ({form, email}) => {
   });
   const { handleSubmit } = methods;
 
-  const onSubmit = (data: FormPasswordType) => {
-    console.log(data);
+  const onSubmit = (password: FormPasswordType) => {
+    LoginPost(email, password);
   };
 
   return (
