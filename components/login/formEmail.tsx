@@ -25,7 +25,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
   const onSubmit = (data: FormEmailType) => {
     handleNext(data);
     setEmail(data.email);
-  }; 
+  };
 
   return (
     <>
