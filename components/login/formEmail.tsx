@@ -17,7 +17,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
   const methods = useForm<FormEmailType>({
     resolver: yupResolver(ValidationSchemaEmail),
     defaultValues: {
-      email: "Correo@correo.com",
+      email: "",
     },
   });
   const { handleSubmit } = methods;
@@ -40,7 +40,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Typography m={2}>¡Hola! Ingresá tu e-mail</Typography>
           <FormProvider {...methods}>
-            <InputText name="email" />
+            <InputText name="email" label="Correo electrónico*" />
             <ButtonsForm form={form} handleNext={handleSubmit(onSubmit)} />
           </FormProvider>
         </form>
