@@ -1,12 +1,12 @@
-import { Alert, Box, Typography } from "@mui/material";
+import { Alert, Box, Stack, Typography } from "@mui/material";
 import { FC, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
-import ButtonsForm from "./buttonsForm";
 import { loginService } from "grupo-04/services/Login/login.service";
 import { useRouter } from "next/router";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export type formPasswordProps = {
   form: number;
@@ -22,11 +22,12 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
       password: "",
     },
   });
-  const { handleSubmit } = methods;
+  const { formState, handleSubmit } = methods;
   const router = useRouter();
   const [error, setError] = useState<string>("");
+  const { isSubmitting } = formState;
 
-  const onSubmit = async (password: any) => {
+  const onSubmit = async (password: FormPasswordType) => {
     setError("");
 
     const data = {
@@ -35,7 +36,6 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
     };
 
     const user = JSON.stringify(data);
-    console.log(user);
 
     const response = await loginService.login(user);
     if (response.status === 200) {
@@ -61,7 +61,15 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
           <Typography m={2}>Ingresá tu contraseña</Typography>
           <FormProvider {...methods}>
             <InputText type="password" name="password" label="Contraseña*" />
-            <ButtonsForm form={form} handleNext={handleSubmit(onSubmit)} />
+            <Stack spacing={2} direction="column">
+              <LoadingButton
+                loading={isSubmitting}
+                onClick={handleSubmit(onSubmit)}
+                variant="contained"
+                sx={{ height: "39px", marginTop: "5px" }}>
+                Continuar
+              </LoadingButton>
+            </Stack>
           </FormProvider>
           {error !== "" && (
             <Alert

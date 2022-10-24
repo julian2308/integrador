@@ -1,11 +1,11 @@
-import { Box, Button, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
-import { FC, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
+import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormEmailType, ValidationSchemaEmail } from "./login.type";
-import ButtonsForm from "./buttonsForm";
+import ButtonForm from "./buttonForm";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export type formEmailProps = {
   form: number;
@@ -22,7 +22,8 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
       email: "",
     },
   });
-  const { handleSubmit } = methods;
+  const { formState, handleSubmit } = methods;
+  const { isSubmitting } = formState;
 
   const onSubmit = (data: FormEmailType) => {
     handleNext(data);
@@ -43,7 +44,16 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
           <Typography m={2}>¡Hola! Ingresá tu e-mail</Typography>
           <FormProvider {...methods}>
             <InputText name="email" label="Correo electrónico*" />
-            <ButtonsForm form={form} handleNext={handleSubmit(onSubmit)} />
+            <Stack spacing={2} direction="column">
+              <LoadingButton
+                loading={isSubmitting}
+                onClick={handleSubmit(onSubmit)}
+                variant="contained"
+                sx={{ height: "39px", marginTop: "5px" }}>
+                Continuar
+              </LoadingButton>
+              <ButtonForm form={form} />
+            </Stack>
           </FormProvider>
         </form>
       </Box>
