@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
-import { loginService } from "grupo-04/services/Login/login.service";
+import { authService } from "grupo-04/services/auth.service.";
 import { useRouter } from "next/router";
 import LoadingButton from "@mui/lab/LoadingButton";
 
@@ -37,7 +37,7 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
 
     const user = JSON.stringify(data);
 
-    const response = await loginService.login(user);
+    const response = await authService.login(user);
     if (response.status === 200) {
       router.push("/", undefined, { shallow: true });
     } else if (response.status === 401) {
@@ -46,7 +46,7 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
     }
   };
-
+ 
   return (
     <>
       <Box
@@ -58,7 +58,9 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
           "& > :not(style)": { m: 1, width: "25ch" },
         }}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={2}>Ingresá tu contraseña</Typography>
+          <Typography m={2} textAlign="center" fontWeight={700}>
+            Ingresá tu contraseña
+          </Typography>
           <FormProvider {...methods}>
             <InputText type="password" name="password" label="Contraseña*" />
             <Stack spacing={2} direction="column">

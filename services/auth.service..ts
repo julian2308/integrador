@@ -22,6 +22,19 @@ const register = async (dataRegister: FormRegisterType) => {
   return await response;
 };
 
-export const userService = {
-  register,
+const login = async (user: any) => {
+  const response = axios
+    .post(`${endpoint}login`, user)
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      return error;
+    });
+
+  return await response;
+};
+
+export const authService = {
+ register, login
 };

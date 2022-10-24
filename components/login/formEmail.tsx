@@ -41,7 +41,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
           "& > :not(style)": { m: 1, width: "25ch" },
         }}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={2}>¡Hola! Ingresá tu e-mail</Typography>
+          <Typography m={2} textAlign="center" fontWeight={700}>¡Hola! Ingresá tu e-mail</Typography>
           <FormProvider {...methods}>
             <InputText name="email" label="Correo electrónico*" />
             <Stack spacing={2} direction="column">
@@ -49,7 +49,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
                 loading={isSubmitting}
                 onClick={handleSubmit(onSubmit)}
                 variant="contained"
-                sx={{ height: "39px", marginTop: "5px" }}>
+                sx={{ height: "39px", marginTop: "5px"}}>
                 Continuar
               </LoadingButton>
               <ButtonForm form={form} />
