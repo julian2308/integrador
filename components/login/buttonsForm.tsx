@@ -1,4 +1,5 @@
 import { Button, Stack } from "@mui/material";
+import { useRouter } from "next/router";
 import { FC } from "react";
 
 export type ButtonsFormProps = {
@@ -6,6 +7,12 @@ export type ButtonsFormProps = {
   handleNext: () => void;
 };
 const ButtonsForm: FC<ButtonsFormProps> = ({ form, handleNext }) => {
+  const router = useRouter();
+
+  const handleClick = () =>{
+    router.push("/registro", undefined, { shallow: true });
+  }
+
   return (
     <Stack spacing={2} direction="column">
       {form === 0 && (
@@ -13,7 +20,7 @@ const ButtonsForm: FC<ButtonsFormProps> = ({ form, handleNext }) => {
           <Button onClick={handleNext} variant="contained">
             Continuar
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button onClick={handleClick} variant="contained" color="secondary">
             Crear cuenta
           </Button>
         </>

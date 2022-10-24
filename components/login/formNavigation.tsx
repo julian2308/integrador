@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import FormEmail from "./formEmail";
 import FormPassword from "./formPassword";
+import { FormEmailType } from "./login.type";
 
 const FormNavigation: FC = () => {
   const [form, setForm] = useState<number>(0);

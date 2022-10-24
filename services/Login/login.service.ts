@@ -1,14 +1,15 @@
 import axios from "axios";
 import {
+  dataLoginType,
   FormPasswordType,
 } from "grupo-04/components/login/login.type";
 
 const endpoint = "http://digitalmoney.ctd.academy/api/";
 
-const login = async (email: string, password: FormPasswordType) => {
+const login = async (data: any) => {
   const response = axios
     .post(`${endpoint}login`, {
-      email, password,
+      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },

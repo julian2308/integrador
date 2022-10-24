@@ -16,6 +16,8 @@ export type formEmailProps = {
 const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
   const methods = useForm<FormEmailType>({
     resolver: yupResolver(ValidationSchemaEmail),
+    mode: "all",
+
     defaultValues: {
       email: "",
     },
