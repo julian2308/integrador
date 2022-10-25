@@ -39,14 +39,20 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
 
     const response = await authService.login(user);
     if (response.status === 200) {
+      localStorage.setItem("token", response.data.token);
       router.push("/", undefined, { shallow: true });
-    } else if (response.status === 401) {
-      setError("Credenciales incorrectas");
+    } else if (response.response.status === 401) {
+      setError("Contraseña incorrecta");
+    } else if (response.response.data.error === "user not found") {
+      setError("Email incorrecto");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
     }
   };
- 
+
   return (
     <>
       <Box
