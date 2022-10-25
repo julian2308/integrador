@@ -2,7 +2,6 @@ import * as yup from "yup";
 import { errorMessages } from "./errorMesages";
 
 export const regexOnlyNumbers = /^[0-9]*$/gm;
-// export const regexPassword = /^(?:(?=.\d)(?=.[a-z])(?=.[A-Z]).)$/;
 export const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
 
 export const ValidationSchemaRegister = yup

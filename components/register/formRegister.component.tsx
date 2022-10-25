@@ -1,12 +1,12 @@
-import { Alert, Box, Button, Typography } from "@mui/material";
+import { Alert, Box, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormRegisterType, ValidationSchemaRegister } from "./regiterSchema";
-import { userService } from "grupo-04/services/User/user.service";
 import { useRouter } from "next/router";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
+import { authService } from "grupo-04/services/auth.service.";
 
 const FormRegister = () => {
   const methods = useForm<FormRegisterType>({
@@ -31,7 +31,7 @@ const FormRegister = () => {
   const onSubmit = async (data: FormRegisterType) => {
     setError("");
 
-    const response = await userService.register(data);
+    const response = await authService.register(data);
 
     if (response.response.status === 200) {
       router.push("/registro-exitoso", undefined, { shallow: true });
@@ -49,7 +49,7 @@ const FormRegister = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh">
+        minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Typography m={5} textAlign="center" variant="h5" fontWeight={700}>
             Crear cuenta
@@ -58,8 +58,8 @@ const FormRegister = () => {
             <Box
               display="grid"
               gridTemplateColumns={{ sm: "repeat(2, 1fr)" }}
-              columnGap={3}
-              rowGap={1}
+              columnGap={2}
+              rowGap={0}
               width={{ xs: 300, sm: 580, md: 750 }}>
               <InputText name="firstname" label="Nombre*" />
               <InputText name="lastname" label="Apellido*" />
