@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
-import { loginService } from "grupo-04/services/Login/login.service";
+import { authService } from "grupo-04/services/auth.service.";
 import { useRouter } from "next/router";
 import LoadingButton from "@mui/lab/LoadingButton";
 
@@ -37,11 +37,17 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
 
     const user = JSON.stringify(data);
 
-    const response = await loginService.login(user);
+    const response = await authService.login(user);
     if (response.status === 200) {
+      localStorage.setItem("token", response.data.token);
       router.push("/", undefined, { shallow: true });
-    } else if (response.status === 401) {
-      setError("Credenciales incorrectas");
+    } else if (response.response.status === 401) {
+      setError("Contraseña incorrecta");
+    } else if (response.response.data.error === "user not found") {
+      setError("Email incorrecto");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
     }
