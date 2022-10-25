@@ -53,6 +53,11 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("token")
+    router.push("/home", undefined, { shallow: true });
+  }
+
   return (
     <>
       <Box
