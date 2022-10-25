@@ -15,7 +15,11 @@ const ButtonForm: FC<ButtonsFormProps> = ({ form }) => {
   return (
     <Stack spacing={2} direction="column">
       {form === 0 && (
-        <Button onClick={handleClick} variant="contained" color="secondary">
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          color="secondary"
+          sx={{ height: "56px" }}>
           Crear cuenta
         </Button>
       )}

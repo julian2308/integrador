@@ -49,7 +49,7 @@ const FormRegister = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh">
+        minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Typography m={5} textAlign="center" variant="h5" fontWeight={700}>
             Crear cuenta
@@ -58,8 +58,8 @@ const FormRegister = () => {
             <Box
               display="grid"
               gridTemplateColumns={{ sm: "repeat(2, 1fr)" }}
-              columnGap={3}
-              rowGap={1}
+              columnGap={2}
+              rowGap={0}
               width={{ xs: 300, sm: 580, md: 750 }}>
               <InputText name="firstname" label="Nombre*" />
               <InputText name="lastname" label="Apellido*" />

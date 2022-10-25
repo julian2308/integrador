@@ -53,33 +53,39 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}>
+        minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={2}>Ingresá tu contraseña</Typography>
-          <FormProvider {...methods}>
-            <InputText type="password" name="password" label="Contraseña*" />
-            <Stack spacing={2} direction="column">
-              <LoadingButton
-                loading={isSubmitting}
-                onClick={handleSubmit(onSubmit)}
-                variant="contained"
-                sx={{ height: "39px", marginTop: "5px" }}>
-                Continuar
-              </LoadingButton>
-            </Stack>
-          </FormProvider>
-          {error !== "" && (
-            <Alert
-              severity="error"
-              sx={{
-                marginTop: "30px",
-              }}>
-              {error}
-            </Alert>
-          )}
+          <Box width={{ xs: 300, sm: 350, md: 400 }}>
+            <Typography
+              my={5}
+              textAlign="center"
+              variant="h5"
+              width="100%"
+              fontWeight={700}>
+              Ingresá tu contraseña
+            </Typography>
+            <FormProvider {...methods}>
+              <InputText type="password" name="password" label="Contraseña*" />
+              <Stack spacing={2} direction="column">
+                <LoadingButton
+                  loading={isSubmitting}
+                  onClick={handleSubmit(onSubmit)}
+                  variant="contained"
+                  sx={{ height: "56px" }}>
+                  Continuar
+                </LoadingButton>
+              </Stack>
+            </FormProvider>
+            {error !== "" && (
+              <Alert
+                severity="error"
+                sx={{
+                  marginTop: "30px",
+                }}>
+                {error}
+              </Alert>
+            )}
+          </Box>
         </form>
       </Box>
     </>

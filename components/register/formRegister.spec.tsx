@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import { renderWithReactHookForm } from "grupo-04/test/form-helper";
 import userEvent from "@testing-library/user-event";
 import FormRegister from "./formRegister.component";
+import { FormRegisterType, ValidationSchemaRegister } from "./regiterSchema";
 
 describe("FormRegister component", () => {
   describe("when rendering default", () => {
@@ -42,7 +43,7 @@ describe("FormRegister component", () => {
     });
   });
 
-  describe("when the user complete an input", () => {
+  describe("when the user complete the form", () => {
     it("should render the data", async () => {
       renderWithReactHookForm(<FormRegister />);
 
@@ -82,6 +83,33 @@ describe("FormRegister component", () => {
       expect(inputPassword.value).toBe("P4ssw0rd");
       expect(inputPasswordVerification.value).toBe("P4ssw0rd");
       expect(inputPhone.value).toBe("123456789");
+    });
+  });
+  describe("when validating a complete register schema", () => {
+    it("should return true", async () => {
+      const userRegister: FormRegisterType = {
+        dni: "123456789",
+        email: "Test@test.test",
+        firstname: "User",
+        lastname: "Test",
+        password: "P4ssw0rd",
+        passwordVerification: "P4ssw0rd",
+        phone: "123456789",
+      };
+      expect(await ValidationSchemaRegister.isValid(userRegister)).toBeTruthy();
+    });
+  });
+  describe("when the user submit the form without complete any input", () => {
+    it("should render the '*Complete este campo' in each input", async () => {
+      renderWithReactHookForm(<FormRegister />);
+      const submitButton = screen.getByRole("button", {
+        name: /CREAR CUENTA/i,
+      });
+      await userEvent.click(submitButton);
+
+      expect(await screen.findAllByText("*Complete este campo")).toHaveLength(
+        7
+      );
     });
   });
 });

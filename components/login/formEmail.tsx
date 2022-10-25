@@ -36,25 +36,32 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}>
+        minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={2}>¡Hola! Ingresá tu e-mail</Typography>
-          <FormProvider {...methods}>
-            <InputText name="email" label="Correo electrónico*" />
-            <Stack spacing={2} direction="column">
-              <LoadingButton
-                loading={isSubmitting}
-                onClick={handleSubmit(onSubmit)}
-                variant="contained"
-                sx={{ height: "39px", marginTop: "5px" }}>
-                Continuar
-              </LoadingButton>
-              <ButtonForm form={form} />
-            </Stack>
-          </FormProvider>
+          <Box width={{ xs: 300, sm: 350, md: 400 }}>
+            <Typography
+              my={5}
+              textAlign="center"
+              variant="h5"
+              width="100%"
+              fontWeight={700}>
+              ¡Hola! Ingresá tu e-mail
+            </Typography>
+
+            <FormProvider {...methods}>
+              <InputText name="email" label="Correo electrónico*" />
+              <Stack spacing={2} direction="column">
+                <LoadingButton
+                  loading={isSubmitting}
+                  onClick={handleSubmit(onSubmit)}
+                  variant="contained"
+                  sx={{ height: "56px" }}>
+                  Continuar
+                </LoadingButton>
+                <ButtonForm form={form} />
+              </Stack>
+            </FormProvider>
+          </Box>
         </form>
       </Box>
     </>
