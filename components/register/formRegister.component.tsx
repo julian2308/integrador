@@ -32,10 +32,10 @@ const FormRegister = () => {
     setError("");
 
     const response = await authService.register(data);
-
-    if (response.response.status === 200) {
+    console.log(response, "asdasd");
+    if (response.status === 201) {
       router.push("/registro-exitoso", undefined, { shallow: true });
-    } else if (response.response.status === 409) {
+    } else if (response.status === 409) {
       setError("El email ingresado ya esta registrado.");
     } else {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
