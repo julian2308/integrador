@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const HomeImageSchema = new mongoose.Schema({
-  file: {
+  url: {
     type: String,
     required: [true, "Url required"],
   },

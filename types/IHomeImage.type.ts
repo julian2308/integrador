@@ -1,3 +1,3 @@
 export interface IHomeImage {
-  file: string;
+  url: string;
 }
