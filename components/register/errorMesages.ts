@@ -7,6 +7,12 @@ export const errorMessages = {
   email: {
     format: "*Ingrese un email válido",
   },
+  firstname: {
+    format: "*No ingrese números ni signos",
+  },
+  lastname: {
+    format: "*No ingrese números ni signos",
+  },
   password: {
     min: "*La cantidad mínima de caracteres es 6",
     max: "*La cantidad máxima de caracteres es 20",
