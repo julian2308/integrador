@@ -5,10 +5,10 @@ import { Link } from "@mui/material";
 
 const GeneralFooter = () => {
     return (
-        <Box component={"footer"} display={'flex'} p={'1rem 0'}
+        <Box component={"footer"} display={'flex'}
             justifyContent={'left'}
             borderTop={'1px solid #eaeaea'}
-            sx={{ backgroundColor: '#000', color:'#C1FD35', fontSize:'14px'  }}>
+            sx={{ backgroundColor: '#000', color:'#C1FD35', fontSize:'14px',height:'5vh'  }}>
            @2022 Digital Money 
         </Box>
     );
