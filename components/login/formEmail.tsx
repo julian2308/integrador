@@ -44,7 +44,8 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
               textAlign="center"
               variant="h5"
               width="100%"
-              fontWeight={700}>
+              color="#FFFFFF"
+              fontWeight={500}>
               ¡Hola! Ingresá tu e-mail
             </Typography>
 
@@ -55,7 +56,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
                   loading={isSubmitting}
                   onClick={handleSubmit(onSubmit)}
                   variant="contained"
-                  sx={{ height: "56px" }}>
+                  sx={{ height: "50px" }}>
                   Continuar
                 </LoadingButton>
                 <ButtonForm form={form} />
