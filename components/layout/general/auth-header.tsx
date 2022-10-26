@@ -4,8 +4,15 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useRouter } from "next/router";
 
 const AuthHeader = () => {
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push("/login")
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar component="nav">
@@ -23,7 +30,9 @@ const AuthHeader = () => {
               sx={{
                 color: "#FFFFFF",
                 background: "#3A393E",
-              }}>
+              }}
+              onClick={onClick}
+              >
               Iniciar sesión
             </Button>
           </Box>

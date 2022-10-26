@@ -32,8 +32,10 @@ const FormRegister = () => {
     setError("");
 
     const response = await authService.register(data);
+    console.log(response);
 
-    if (response.response.status === 200) {
+    
+    if (response.status === 201) {
       router.push("/registro-exitoso", undefined, { shallow: true });
     } else if (response.response.status === 409) {
       setError("El email ingresado ya esta registrado.");
@@ -51,7 +53,7 @@ const FormRegister = () => {
         alignItems="center"
         minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={5} textAlign="center" variant="h5" fontWeight={700}>
+          <Typography m={5} textAlign="center" variant="h5" fontWeight={700} color="#FFFFFF">
             Crear cuenta
           </Typography>
           <FormProvider {...methods}>
