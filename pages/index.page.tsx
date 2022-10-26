@@ -3,16 +3,21 @@ import Head from "next/head";
 import dbConnect from "../lib/dbConnect";
 import LayoutGeneral from "grupo-04/components/layout/layout-general";
 import BodySingle from "grupo-04/components/layout/general/general-body";
-import HomeImage from "grupo-04/components/home/img-home";
+import MainImageHome from "grupo-04/components/home/img-home";
 import HomeData from "models/HomeData";
+import HomeImage from "models/HomeImage";
 import { IHomeData } from "types/IHomeData.type";
+import { IHomeImage } from "types/IHomeImage.type";
+import Image from "next/image";
 
 interface Props {
   data: IHomeData;
+  dataImage: IHomeImage;
 }
 
-const Home: NextPage<Props> = ({ data }) => {
+const Home: NextPage<Props> = ({ data, dataImage }) => {
   console.log(data);
+  console.log(dataImage.file);
 
   return (
     <LayoutGeneral>
@@ -22,7 +27,8 @@ const Home: NextPage<Props> = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <BodySingle>
-        <HomeImage></HomeImage>
+        <Image src={dataImage.file} width={1000} height={1000} />
+        <MainImageHome />
       </BodySingle>
     </LayoutGeneral>
   );
@@ -40,7 +46,15 @@ export async function getServerSideProps() {
       return info;
     });
 
-    return { props: { data } };
+    /* find all the data in our database */
+    const resultImage = await HomeImage.find({});
+    const dataImage = resultImage.map((doc) => {
+      const info = doc.toObject();
+      info._id = info._id.toString();
+      return info;
+    });
+
+    return { props: { data, dataImage } };
   } catch (error) {
     console.log(error);
   }
