@@ -40,9 +40,9 @@ const GeneralHeader = () => {
               </Toolbar>
           </AppBar>
 
-          <Box component="main" >
+          {/* <Box component="main" >
               <Toolbar />
-          </Box>
+          </Box> */}
       </Box>
   )
 }
