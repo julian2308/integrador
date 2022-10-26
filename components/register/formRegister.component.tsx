@@ -35,8 +35,8 @@ const FormRegister = () => {
 
     if (response.status === 201) {
       router.push("/registro-exitoso", undefined, { shallow: true });
-    } else if (response.status === 409) {
-      setError("El email ingresado ya esta registrado.");
+    } else if (response.response.status === 409) {
+      setError("El email ingresado ya está registrado.");
     } else {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
     }

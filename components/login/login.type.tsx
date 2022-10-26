@@ -4,7 +4,7 @@ export const ValidationSchemaEmail = yup
   .object({
     email: yup
       .string()
-      .email("Ingrese un correo valido")
+      .email("Ingrese un correo válido")
       .required("Email requerido"),
   })
   .required();

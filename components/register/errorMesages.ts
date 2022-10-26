@@ -2,7 +2,7 @@ export const errorMessages = {
   required: "*Completa los campos requeridos",
   requiredField: "*Complete este campo",
   dni: {
-    format: "*Ingrese sólo núneros",
+    format: "*Ingrese sólo números",
   },
   email: {
     format: "*Ingrese un email válido",
@@ -16,6 +16,6 @@ export const errorMessages = {
     format: "*No coinciden las contraseñas",
   },
   phone: {
-    format: "*Ingrese sólo núneros",
+    format: "*Ingrese sólo números",
   },
 };
