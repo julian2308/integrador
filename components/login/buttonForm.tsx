@@ -19,7 +19,7 @@ const ButtonForm: FC<ButtonsFormProps> = ({ form }) => {
           onClick={handleClick}
           variant="contained"
           color="secondary"
-          sx={{ height: "56px" }}>
+          sx={{ height: "50px" }}>
           Crear cuenta
         </Button>
       )}
