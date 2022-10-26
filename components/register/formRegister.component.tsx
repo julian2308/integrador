@@ -53,7 +53,7 @@ const FormRegister = () => {
         alignItems="center"
         minHeight="100%">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography m={5} textAlign="center" variant="h5" fontWeight={700} color="#FFFFFF">
+          <Typography m={5} textAlign="center" variant="h5" fontWeight={500} color="#FFFFFF">
             Crear cuenta
           </Typography>
           <FormProvider {...methods}>

@@ -23,13 +23,17 @@ const AuthHeader = () => {
             fontSize: "14px",
           }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MUI
+          DMH
           </Typography>
           <Box>
             <Button
               sx={{
                 color: "#FFFFFF",
                 background: "#3A393E",
+                "&.MuiButtonBase-root:hover": {
+                  background: "#3A393E",
+                  color: "#C1FD35",
+                },
               }}
               onClick={onClick}
               >

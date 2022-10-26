@@ -72,7 +72,8 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
               textAlign="center"
               variant="h5"
               width="100%"
-              fontWeight={700}>
+              color="#FFFFFF"
+              fontWeight={500}>
               Ingresá tu contraseña
             </Typography>
             <FormProvider {...methods}>
@@ -82,7 +83,7 @@ const FormPassword: FC<formPasswordProps> = ({ form, email }) => {
                   loading={isSubmitting}
                   onClick={handleSubmit(onSubmit)}
                   variant="contained"
-                  sx={{ height: "56px" }}>
+                  sx={{ height: "50px" }}>
                   Continuar
                 </LoadingButton>
               </Stack>

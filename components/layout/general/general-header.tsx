@@ -21,14 +21,14 @@ const GeneralHeader = () => {
         <Toolbar
           sx={{ backgroundColor: "#201F22", color: "#C1FD35", fontSize: "14px" }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MUI
+          DMH
           </Typography>
           <Box>
             <Button
-              variant="outlined"
               sx={{
                 color: "#C1FD35",
-                border: "1px solid #C1FD35",
+                background: "#201F22",
+                border: "0.5px solid #C1FD35",
                 marginRight: "10px",
                 "&.MuiButtonBase-root:hover": {
                   background: "#C1FD35",
@@ -40,14 +40,13 @@ const GeneralHeader = () => {
             </Button>
 
             <Button
-              variant="outlined"
               sx={{
-                color: "#C1FD35",
-                border: "1px solid #C1FD35",
+                color: "#000000",
+                background: "#C1FD35",
                 marginRight: "10px",
                 "&.MuiButtonBase-root:hover": {
-                  background: "#C1FD35",
-                  color: "#000000",
+                  background: "#272727",
+                  color: "#C1FD35",
                 },
               }}
               onClick={onClickRegister}>
@@ -56,10 +55,6 @@ const GeneralHeader = () => {
           </Box>
         </Toolbar>
       </AppBar>
-
-      {/* <Box component="main" >
-              <Toolbar />
-          </Box> */}
     </Box>
   );
 };

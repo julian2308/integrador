@@ -56,7 +56,7 @@ const FormEmail: FC<formEmailProps> = ({ form, setEmail, handleNext }) => {
                   loading={isSubmitting}
                   onClick={handleSubmit(onSubmit)}
                   variant="contained"
-                  sx={{ height: "56px" }}>
+                  sx={{ height: "50px" }}>
                   Continuar
                 </LoadingButton>
                 <ButtonForm form={form} />

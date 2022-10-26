@@ -16,7 +16,7 @@ const BasicHeader = () => {
             fontSize: "14px",
           }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MUI
+            DMH
           </Typography>
         </Toolbar>
       </AppBar>
