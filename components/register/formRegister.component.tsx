@@ -2,7 +2,11 @@ import { Alert, Box, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormRegisterType, ValidationSchemaRegister } from "./regiterSchema";
+import {
+  FormRegisterType,
+  regexOnlyNumbers,
+  ValidationSchemaRegister,
+} from "./regiterSchema";
 import { useRouter } from "next/router";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
@@ -68,7 +72,7 @@ const FormRegister = () => {
               width={{ xs: 300, sm: 580, md: 750 }}>
               <InputText name="firstname" label="Nombre*" />
               <InputText name="lastname" label="Apellido*" />
-              <InputText name="dni" label="DNI*" />
+              <InputText name="dni" label="DNI*" regex={regexOnlyNumbers} />
               <InputText name="email" label="Correo electrónico*" />
               <InputText type="password" name="password" label="Contraseña*" />
               <InputText
@@ -76,7 +80,11 @@ const FormRegister = () => {
                 name="passwordVerification"
                 label="Confirmar contraseña*"
               />
-              <InputText name="phone" label="Télefono*" />
+              <InputText
+                name="phone"
+                label="Télefono*"
+                regex={regexOnlyNumbers}
+              />
               <LoadingButton
                 loading={isSubmitting}
                 onClick={handleSubmit(onSubmit)}
