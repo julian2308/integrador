@@ -8,7 +8,7 @@ describe("FormEmail component", () => {
   it("should render the heading", () => {
     renderWithReactHookForm(
       <FormEmail
-        form={1}
+        form={0}
         setEmail={(email: string) => {}}
         handleNext={(data: FormEmailType) => {}}
       />
@@ -21,7 +21,7 @@ describe("FormEmail component", () => {
   it("should render all the inputs", () => {
     renderWithReactHookForm(
       <FormEmail
-        form={1}
+        form={0}
         setEmail={(email: string) => {}}
         handleNext={(data: FormEmailType) => {}}
       />
@@ -36,7 +36,7 @@ describe("FormEmail component", () => {
   it("should render the submit and redirect buttons", () => {
     renderWithReactHookForm(
       <FormEmail
-        form={1}
+        form={0}
         setEmail={(email: string) => {}}
         handleNext={(data: FormEmailType) => {}}
       />
@@ -44,6 +44,11 @@ describe("FormEmail component", () => {
     const submitButton = screen.getByRole("button", {
       name: /CONTINUAR/i,
     });
+    const ButtonCrearCuenta = screen.getByRole("button", {
+      name: /CREAR CUENTA/i,
+    });
     expect(submitButton).toBeInTheDocument();
+    expect(ButtonCrearCuenta).toBeInTheDocument();
+
   });
 });
