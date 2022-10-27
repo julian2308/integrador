@@ -27,6 +27,9 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-undef":"off"
   }
 }
