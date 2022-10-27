@@ -2,16 +2,18 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import logo2 from "../../../public/logoNegro2.png";
+import logo1 from "../../../public/logoNegro1.png";
 
 const AuthHeader = () => {
   const router = useRouter();
 
   const onClick = () => {
-    router.push("/login")
-  }
+    router.push("/login");
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -22,9 +24,10 @@ const AuthHeader = () => {
             color: "#201F22",
             fontSize: "14px",
           }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          DMH
-          </Typography>
+          <Box component="div" sx={{ flexGrow: 1 }}>
+            <Image src={logo1} />
+            <Image src={logo2} />
+          </Box>
           <Box>
             <Button
               sx={{
@@ -35,8 +38,7 @@ const AuthHeader = () => {
                   color: "#C1FD35",
                 },
               }}
-              onClick={onClick}
-              >
+              onClick={onClick}>
               Iniciar sesión
             </Button>
           </Box>
