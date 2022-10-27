@@ -1,8 +1,11 @@
-import { Box, IconButton, TextField } from "@mui/material";
+import { Box, IconButton, TextField, TextFieldProps } from "@mui/material";
 import { FC, useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import { styled } from "@mui/material/styles";
+import { OutlinedInputProps } from "@mui/material/OutlinedInput";
+
 interface Props {
   name: string;
   label?: string;
@@ -21,6 +24,33 @@ const InputText: FC<Props> = ({
 }) => {
   const { control } = useFormContext();
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  // const InputCustom = styled(TextField)(({ theme }) => ({
+  //   "& label": {
+  //     color: "white",
+  //   },
+  //   "&:hover label": {
+  //     color: theme.palette.primary.main,
+  //   },
+  //   "& label.Mui-focused": {
+  //     color: theme.palette.primary.main,
+  //   },
+  //   "& input:invalid + fieldset": {
+  //     color: theme.palette.warning.main,
+  //   },
+  //   "& .MuiOutlinedInput-root": {
+  //     color: "#ffffff",
+  //     "& fieldset": {
+  //       borderColor: "white",
+  //     },
+  //     "&:hover fieldset": {
+  //       borderColor: theme.palette.primary.main,
+  //     },
+  //     "&.Mui-focused fieldset": {
+  //       borderColor: theme.palette.primary.main,
+  //     },
+  //   },
+  // }));
 
   const {
     field: { onChange, value, ref },
@@ -53,17 +83,15 @@ const InputText: FC<Props> = ({
       <TextField
         onChange={onChange}
         value={inputValue(value)}
+        variant="outlined"
         label={label}
         name={name}
         inputRef={ref}
         type={showPassword ? "text" : type}
         inputProps={{ maxLength: maxLength }}
         fullWidth
-        error={!!errors[name] }
+        error={!!errors[name]}
         helperText={`${errors[name]?.message || ""}`}
-        sx={{
-          backgroundColor: "#fff",
-        }}
       />
       {type === "password" && (
         <IconButton
@@ -75,10 +103,15 @@ const InputText: FC<Props> = ({
             top: "15px",
           }}>
           {showPassword ? (
-      
-            <VisibilityOutlinedIcon fontSize="small" />
+            <VisibilityOutlinedIcon
+              fontSize="small"
+              sx={{ color: "#ffffff" }}
+            />
           ) : (
-            <VisibilityOffOutlinedIcon fontSize="small" />
+            <VisibilityOffOutlinedIcon
+              fontSize="small"
+              sx={{ color: "#ffffff" }}
+            />
           )}
         </IconButton>
       )}
