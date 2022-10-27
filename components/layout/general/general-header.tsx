@@ -21,7 +21,7 @@ const GeneralHeader = () => {
   return (
       <Box sx={{ display: 'flex', height:'5vh'}}>
           <AppBar component="nav">
-              <Toolbar sx={{ backgroundColor: '#000', color: '#C1FD35', fontSize: '14px' }}>
+              <Toolbar sx={{ backgroundColor: '#201F22', color: '#C1FD35', fontSize: '14px' }}>
 
                   <Box component="div"
                       sx={{ flexGrow: 1 }} >

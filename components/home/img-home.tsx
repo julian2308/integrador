@@ -1,83 +1,96 @@
-import React from 'react'
-import Image from 'next/image'
-import styles from './home.module.css'
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-/* import styled from 'styled-components'; */
-import { styled } from '@mui/system';
+import React, { FC } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import styled from "styled-components";
+import { IHomeData } from "types/IHomeData.type";
 
-/* const Space = styled.('div')`
-   height:1px;
-   width:100px;
-   backgroundColor:#C1FD35;
-`; */
-const Space = styled('div')({
-    height: 2,
-    width: '100%',
-    backgroundColor: '#C1FD35', 
-    margin: '10px 0'
-   
-});
+const Content = styled.div<Image>`
+  background-image: url(${(props) => props.image});
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -48px;
+  position: relative;
+`;
 
+const BoxGreen = styled.div`
+  width: 100%;
+  height: 148px;
+  background-color: #C1FD35;
+  border-radius: 30px 30px 0px 0px;
+  position: absolute;
+  bottom: 0;
+`;
 
+const Space = styled.div`
+    height: 2.5px;
+    width: 100%;
+    background-color: #C1FD35;
+    margin: 10px 0;
+`;
 
-const HomeImage = () => {
+type Image = {
+  image: string;
+};
+
+type Props = {
+  image: string;
+  data: IHomeData[];
+};
+
+const HomeImage: FC<Props> = ({ image, data }) => {
   return (
+    <>
+      <Content image={image}>
+        <Box sx={{ width: "100%", maxWidth: 500, px: "2%", py: "3%" }}>
+          <Typography variant="h3" gutterBottom sx={{ color: "#ffff" }}>
+            {data[0].title}
+          </Typography>
 
-      <div className={styles.imagen}>
-          <Box sx={{ width: '100%',
-                     maxWidth: 500,
-                     px:'2%',  
-                     py:'3%'}}>
-              <Typography variant="h3" gutterBottom sx={{color:'#ffff'}}>
-                  De ahora en adelante, hacés más con tu dinero
-              </Typography>
-          
-              <Typography variant="h4" gutterBottom sx={{ color:'#C1FD35' }}>
-                  Tu nueva billetera virtual
-              </Typography>
+          <Typography variant="h4" gutterBottom sx={{ color: "#C1FD35" }}>
+            {data[0].text}
+          </Typography>
+        </Box>
+        <BoxGreen/>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { sm: "row" } ,
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            position: "absolute",
+            bottom: "10%",
+            width: " 100%",
+          }}>
+            
+          <Box
+            sx={{
+              bgcolor: "#ffffff",
+              borderRadius: 5,
+              width: "500px",
+              padding: 3,
+            }}>
+            <Typography variant="h4">{data[1].title}</Typography>
+            <Space/>
+            <Typography>{data[1].text}</Typography>
           </Box>
-          <div className={styles.service}></div>
-          <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-evenly',
-                    position: 'absolute',
-                    bottom: '10%',  
-                    width:' 100%'        
-                }}>
-              <Box sx={{
-                  bgcolor: '#ffffff',
-                  borderRadius: 3,
-                  width: '40%',
-                  padding:3
-                  }}>
-                  <Typography variant="h4">Transferí dinero </Typography>
-                  <Space />
-                  <Typography>Desde Digital Money House vas a poder transferir dinero a otras cuentas, asi como también recibir transferencias y nuclear tu capital en nuestra billetera virtual</Typography>
-              </Box>
-           
-              <Box sx={{
-                  bgcolor: '#ffffff',
-                  borderRadius: 3,
-                  width: '40%',
-                  padding: 3
-                  }}>
-                  <Typography variant="h4" >Pago de servicios</Typography>
-                  <Space />
-                  <Typography>Pagá mensualmente los servicios en 3 simples clicks. Facil, rápido y conveniente. Olvidate de las facturas en papel</Typography>
-              </Box>
+
+          <Box
+            sx={{
+              bgcolor: "#ffffff",
+              borderRadius: 3,
+              width: "500px",
+              padding: 3,
+            }}>
+            <Typography variant="h4"> {data[2].title}</Typography>
+            <Space/>
+            <Typography>{data[2].text}</Typography>
           </Box>
-          
-          
-     </div> 
-
-/*     <div className=''>
-         <Image src="/pexels-co.png"/>
-    </div> */
-
-  )
-}
+        </Box>
+      </Content>
+    </>
+  );
+};
 
 export default HomeImage;

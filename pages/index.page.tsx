@@ -11,13 +11,11 @@ import { IHomeImage } from "types/IHomeImage.type";
 import Image from "next/image";
 
 interface Props {
-  data: IHomeData;
+  data: IHomeData[];
   dataImage: IHomeImage[];
 }
 
 const Home: NextPage<Props> = ({ data, dataImage }) => {
-  console.log(data);
-  console.log(dataImage);
 
   return (
     <LayoutGeneral>
@@ -27,13 +25,7 @@ const Home: NextPage<Props> = ({ data, dataImage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <BodySingle>
-        <Image
-          src={dataImage[0].url}
-          alt="Picture of the author"
-          width={500}
-          height={500}
-        />
-        <MainImageHome />
+        <MainImageHome image={dataImage[0].url} data={data}/>
       </BodySingle>
     </LayoutGeneral>
   );
