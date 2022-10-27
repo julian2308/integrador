@@ -46,6 +46,7 @@ const GeneralHeader = () => {
                 marginRight: "10px",
                 "&.MuiButtonBase-root:hover": {
                   background: "#272727",
+                  border: "0.5px solid #C1FD35",
                   color: "#C1FD35",
                 },
               }}
