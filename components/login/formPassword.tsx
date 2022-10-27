@@ -23,8 +23,7 @@ const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
       password: "",
     },
   });
-  const { formState, handleSubmit } = methods;
-  const router = useRouter();
+  const { formState, handleSubmit } = methods;  
   const [error, setError] = useState<string>("");
   const { isSubmitting } = formState;
 
@@ -53,12 +52,7 @@ const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
     } else {
       setError("Ha ocurrido un error, vuelva a intentarlo.");
     }
-  };
-
-  const logout = () => {
-    localStorage.removeItem("token")
-    router.push("/home", undefined, { shallow: true });
-  }
+  };  
 
   return (
     <>
