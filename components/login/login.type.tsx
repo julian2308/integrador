@@ -15,6 +15,12 @@ export const ValidationSchemaPassword = yup
   })
   .required();
 
+  export const ValidationSchemaCode = yup
+  .object({
+    code: yup.string().required("Código requerido"),
+  })
+  .required();
+
 export type FormEmailType = {
   email: string;
 };
@@ -27,3 +33,11 @@ export type dataLoginType = {
   email: string;
   password: string;
 };
+
+export type FormCodeType = {
+  code: string;
+};
+
+export type FormVerificationType = {
+  code: string;
+}

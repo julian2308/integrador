@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import FormEmail from "./formEmail";
 import FormPassword from "./formPassword";
+import FormVerification from "./formVerification";
 
 const FormNavigation: FC = () => {
   const [form, setForm] = useState<number>(0);
@@ -8,6 +9,10 @@ const FormNavigation: FC = () => {
 
   const handleSubmitFormEmail = () => {
     setForm(1);
+  };
+
+  const handleSubmitFormPassword = () => {
+    setForm(2);
   };
 
   return (
@@ -19,7 +24,8 @@ const FormNavigation: FC = () => {
           handleNext={handleSubmitFormEmail}
         />
       )}
-      {form === 1 && <FormPassword form={form} email={email} />}
+      {form === 1 && <FormPassword form={form} email={email} handleNext={handleSubmitFormPassword}/>}
+      {form === 2 && <FormVerification />}
     </>
   );
 };

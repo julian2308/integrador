@@ -3,24 +3,16 @@ import { FC, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import InputText from "../InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormPasswordType, ValidationSchemaPassword } from "./login.type";
-import { authService } from "grupo-04/services/auth.service.";
+import { FormVerificationType, ValidationSchemaCode } from "./login.type";
 import { useRouter } from "next/router";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-export type formPasswordProps = {
-  form: number;
-  email: string;
-  handleNext: () => void;
-};
-
-const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
-  const methods = useForm<FormPasswordType>({
-    resolver: yupResolver(ValidationSchemaPassword),
+const FormVerification: FC = () => {
+  const methods = useForm<FormVerificationType>({
+    resolver: yupResolver(ValidationSchemaCode),
     mode: "all",
-
     defaultValues: {
-      password: "",
+      code: "",
     },
   });
   const { formState, handleSubmit } = methods;
@@ -28,37 +20,20 @@ const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
   const [error, setError] = useState<string>("");
   const { isSubmitting } = formState;
 
-  const onSubmit = async (password: FormPasswordType) => {
+  const onSubmit = async (code: FormVerificationType) => {
     setError("");
 
-    const data = {
-      email: email,
-      password: password.password,
-    };
-
-    const user = JSON.stringify(data);
-
-    const response = await authService.login(user);
-    if (response.status === 200) {
-      localStorage.setItem("token", response.data.token);
-      /* router.push("/", undefined, { shallow: true }); */
-      handleNext();
-    } else if (response.response.status === 401) {
-      setError("Contraseña incorrecta");
-    } else if (response.response.data.error === "user not found") {
-      setError("Email incorrecto");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+    if (code.code === "123456789") {
+      router.push("/", undefined, { shallow: true });
     } else {
-      setError("Ha ocurrido un error, vuelva a intentarlo.");
-    }
+      setError("Código incorrecto");
+    }    
   };
 
   const logout = () => {
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     router.push("/home", undefined, { shallow: true });
-  }
+  };
 
   return (
     <>
@@ -76,10 +51,14 @@ const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
               width="100%"
               color="#FFFFFF"
               fontWeight={500}>
-              Ingresá tu contraseña
+              Ingresá el código de verificación
             </Typography>
             <FormProvider {...methods}>
-              <InputText type="password" name="password" label="Contraseña*" />
+              <InputText
+                type="password"
+                name="code"
+                label="Código de verificación*"
+              />
               <Stack spacing={2} direction="column">
                 <LoadingButton
                   loading={isSubmitting}
@@ -106,4 +85,4 @@ const FormPassword: FC<formPasswordProps> = ({ form, email, handleNext }) => {
   );
 };
 
-export default FormPassword;
+export default FormVerification;
