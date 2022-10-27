@@ -31,6 +31,7 @@ const HomeImage: FC<Props> = ({ image, data }) => {
           sx={{
             display: "flex",
             flexDirection: { sm: "row" },
+            margin: '10px 0',
             flexWrap: "wrap",
             justifyContent: "space-evenly",
             position: "absolute",

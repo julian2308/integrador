@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import logo2 from "../../../public/logoNegro2.png";
 import logo1 from "../../../public/logoNegro1.png";
+import Link from "next/link";
 
 const AuthHeader = () => {
   const router = useRouter();
@@ -24,10 +25,12 @@ const AuthHeader = () => {
             color: "#201F22",
             fontSize: "14px",
           }}>
-          <Box component="div" sx={{ flexGrow: 1 }}>
-            <Image src={logo1} />
-            <Image src={logo2} />
-          </Box>
+           <Link href="/">
+            <Box component="div" sx={{ flexGrow: 1 }}>
+              <Image src={logo1} />
+              <Image src={logo2} />
+            </Box>
+          </Link>
           <Box>
             <Button
               sx={{
