@@ -59,7 +59,7 @@ const InputText: FC<Props> = ({
         type={showPassword ? "text" : type}
         inputProps={{ maxLength: maxLength }}
         fullWidth
-        error={!!errors[name]}
+        error={!!errors[name] }
         helperText={`${errors[name]?.message || ""}`}
         sx={{
           backgroundColor: "#fff",
@@ -75,9 +75,10 @@ const InputText: FC<Props> = ({
             top: "15px",
           }}>
           {showPassword ? (
-            <VisibilityOffOutlinedIcon fontSize="small" />
-          ) : (
+      
             <VisibilityOutlinedIcon fontSize="small" />
+          ) : (
+            <VisibilityOffOutlinedIcon fontSize="small" />
           )}
         </IconButton>
       )}

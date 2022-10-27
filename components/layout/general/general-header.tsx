@@ -7,8 +7,17 @@ import Button from '@mui/material/Button';
 import Image from 'next/image';
 import logo2 from '../../../public/logoParte1.png';
 import logo1 from '../../../public/logoParte2.png';
+import { useRouter } from "next/router";
 
 const GeneralHeader = () => {
+  const router = useRouter();
+  const onClickLogin = () => {
+    router.push("/login");
+  };
+
+  const onClickRegister = () => {
+    router.push("/register");
+  };
   return (
       <Box sx={{ display: 'flex', height:'5vh'}}>
           <AppBar component="nav">
@@ -22,17 +31,33 @@ const GeneralHeader = () => {
                
                   <Box >
 
-                      <Button variant="outlined" sx={{ color: '#C1FD35', border: '1px solid #C1FD35', marginRight: '10px', "&.MuiButtonBase-root:hover": {
-                          background: '#C1FD35', color:'#000000'
-                      } }}>
+                      <Button
+                          sx={{
+                              color: "#C1FD35",
+                              background: "#201F22",
+                              border: "0.5px solid #C1FD35",
+                              marginRight: "10px",
+                              "&.MuiButtonBase-root:hover": {
+                                  background: "#C1FD35",
+                                  color: "#000000",
+                              },
+                          }}
+                          onClick={onClickLogin}>
                           ingresar
                       </Button>
                
-                      <Button variant="outlined" sx={{
-                          color: '#C1FD35', border: '1px solid #C1FD35', marginRight: '10px', "&.MuiButtonBase-root:hover": {
-                              background: '#C1FD35', color: '#000000'
-                          }
-                      }}>
+                      <Button
+                          sx={{
+                              color: "#000000",
+                              background: "#C1FD35",
+                              marginRight: "10px",
+                              "&.MuiButtonBase-root:hover": {
+                                  background: "#272727",
+                                  border: "0.5px solid #C1FD35",
+                                  color: "#C1FD35",
+                              },
+                          }}
+                          onClick={onClickRegister}>
                           Crear cuenta
                       </Button>
 
@@ -40,11 +65,9 @@ const GeneralHeader = () => {
               </Toolbar>
           </AppBar>
 
-          <Box component="main" >
-              <Toolbar />
-          </Box>
       </Box>
-  )
-}
+   
+  );
+};
 
-export default GeneralHeader
+export default GeneralHeader;

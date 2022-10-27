@@ -2,10 +2,16 @@ export const errorMessages = {
   required: "*Completa los campos requeridos",
   requiredField: "*Complete este campo",
   dni: {
-    format: "*Ingrese sólo núneros",
+    format: "*Ingrese sólo números",
   },
   email: {
     format: "*Ingrese un email válido",
+  },
+  firstname: {
+    format: "*No ingrese números ni signos",
+  },
+  lastname: {
+    format: "*No ingrese números ni signos",
   },
   password: {
     min: "*La cantidad mínima de caracteres es 6",
@@ -16,6 +22,6 @@ export const errorMessages = {
     format: "*No coinciden las contraseñas",
   },
   phone: {
-    format: "*Ingrese sólo núneros",
+    format: "*Ingrese sólo números",
   },
 };
