@@ -10,25 +10,18 @@ import { IHomeData } from "types/IHomeData.type";
 import { IHomeImage } from "types/IHomeImage.type";
 import { useEffect, useState } from "react";
 import LayoutLogged from "grupo-04/components/layout/layout-logged";
-import { Stack, Typography } from "@mui/material";
-import { useRouter } from "next/router";
+import LateralMenu from "grupo-04/components/menu/lateral-menu";
 interface Props {
   data: IHomeData[];
   dataImage: IHomeImage[];
 }
 
 const Home: NextPage<Props> = ({ data, dataImage }) => {
-  const router = useRouter();
   const [logged, setLogged] = useState(false);
 
   useEffect(() => {
     localStorage.getItem("token") ? setLogged(true) : setLogged(false);
   }, []);
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    router.push("/", undefined, { shallow: true });
-  };
 
   return (
     <>
@@ -39,72 +32,7 @@ const Home: NextPage<Props> = ({ data, dataImage }) => {
       </Head>
       {logged ? (
         <LayoutLogged>
-          <Stack sx={{ height: "100%", width: "100%" }}>
-            <Stack
-              sx={{
-                height: "100%",
-                width: "300px",
-                backgroundColor: "#C1FD35",
-                padding: "60px 30px",
-              }}>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Inicio
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Actividad
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Tu perfil
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Cargar dinero
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Pagar servicios
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => <></>}>
-                Tarjetas
-              </Typography>
-              <Typography
-                mb="10px"
-                variant="h6"
-                color={"black"}
-                sx={{ ":hover": { cursor: "pointer" } }}
-                onClick={() => logout()}>
-                Cerrar Sesión
-              </Typography>
-            </Stack>
-          </Stack>
+          <LateralMenu />
         </LayoutLogged>
       ) : (
         <LayoutGeneral>
