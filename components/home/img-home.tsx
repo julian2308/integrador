@@ -17,12 +17,12 @@ const HomeImage: FC<Props> = ({ image, data }) => {
   return (
     <>
       <Content image={image}>
-        <Box sx={{ width: "100%", maxWidth: 500, px: "2%", py: "65px" }}>
-          <Typography variant="h3" gutterBottom sx={{ color: "#ffff" }}>
+        <Box sx={{ width: "50%", maxWidth: 500, px: "2%", py: "65px" }}>
+                  <Typography variant="h3" gutterBottom sx={{ color: "#ffff" ,fontSize: "1.6rem", }}>
             {data[0].title}
           </Typography>
 
-          <Typography variant="h4" gutterBottom sx={{ color: "#C1FD35" }}>
+                  <Typography variant="h4" gutterBottom sx={{ color: "#C1FD35", fontSize: "1.4rem", }}>
             {data[0].text}
           </Typography>
         </Box>
@@ -47,13 +47,14 @@ const HomeImage: FC<Props> = ({ image, data }) => {
               padding: 3,
               margin: "10px 10px"
             }}>
-            <Typography fontWeight={700} variant="h4">
+            <Typography fontWeight={700} variant="h4" 
+            sx={{fontSize: "1.4rem"}}> 
               {data[1].title}
             </Typography>
             <Space />
-            <Typography
+             <Typography variant="body2"
               sx={{
-                fontSize: "1.2rem",
+                fontSize: "1rem",
                 lineHeight: "1.7rem",
               }}>
               {data[1].text}
@@ -68,13 +69,14 @@ const HomeImage: FC<Props> = ({ image, data }) => {
               padding: 3,
               margin: "10px 10px"
             }}>
-            <Typography fontWeight={700} variant="h4">
+            <Typography fontWeight={700} variant="h4"
+            sx={{ fontSize: "1.4rem" }}> 
             {data[2].title}
             </Typography>
             <Space />
-            <Typography
+            <Typography variant="body2"
               sx={{
-                fontSize: "1.2rem",
+                fontSize: "1rem",
                 lineHeight: "1.7rem",
               }}>
               {data[2].text}
@@ -97,9 +99,9 @@ const Content = styled.div<Image>`
   background-position-y: -48px;
   position: relative;
    @media (max-width:999px) {
-       height: 900px;
+       height: 1100px;
     } 
-     @media (max-width:399px) {
+     @media (max-width:425px) {
        height: 1000px;
     } 
 `;
@@ -112,7 +114,7 @@ const BoxGreen = styled.div`
   position: absolute;
   bottom: 0;
    @media (max-width:999px) {
-       height: 250px;
+       height: 430px;
     } 
 `;
 
