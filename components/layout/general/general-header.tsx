@@ -29,7 +29,9 @@ const GeneralHeader = () => {
             fontSize: "14px",
           }}>
           <Link href="/">
-            <Box component="div" sx={{ flexGrow: 1 }}>
+            <Box
+              component="div"
+              sx={{ flexGrow: 1, ":hover": { cursor: "pointer" } }}>
               <Image src={logo1} />
               <Image src={logo2} />
             </Box>

@@ -92,6 +92,9 @@ const InputText: FC<Props> = ({
         fullWidth
         error={!!errors[name]}
         helperText={`${errors[name]?.message || ""}`}
+        sx={{
+          backgroundColor: "transparent"
+        }}
       />
       {type === "password" && (
         <IconButton
