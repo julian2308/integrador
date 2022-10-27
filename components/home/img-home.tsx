@@ -17,7 +17,7 @@ const HomeImage: FC<Props> = ({ image, data }) => {
   return (
     <>
       <Content image={image}>
-        <Box sx={{ width: "100%", maxWidth: 500, px: "2%", py: "3%" }}>
+        <Box sx={{ width: "100%", maxWidth: 500, px: "2%", py: "65px" }}>
           <Typography variant="h3" gutterBottom sx={{ color: "#ffff" }}>
             {data[0].title}
           </Typography>
@@ -35,15 +35,17 @@ const HomeImage: FC<Props> = ({ image, data }) => {
             flexWrap: "wrap",
             justifyContent: "space-evenly",
             position: "absolute",
-            bottom: "10%",
+            bottom: "5%",
             width: " 100%",
+           
           }}>
           <Box
             sx={{
               bgcolor: "#ffffff",
               borderRadius: 5,
-              width: "500px",
+              width: "480px",
               padding: 3,
+              margin: "10px 10px"
             }}>
             <Typography fontWeight={700} variant="h4">
               {data[1].title}
@@ -61,13 +63,13 @@ const HomeImage: FC<Props> = ({ image, data }) => {
           <Box
             sx={{
               bgcolor: "#ffffff",
-              borderRadius: 3,
-              width: "500px",
-              padding: 4,
+              borderRadius: 5,
+              width: "480px",
+              padding: 3,
+              margin: "10px 10px"
             }}>
             <Typography fontWeight={700} variant="h4">
-              {" "}
-              {data[2].title}
+            {data[2].title}
             </Typography>
             <Space />
             <Typography
@@ -94,6 +96,12 @@ const Content = styled.div<Image>`
   background-size: cover;
   background-position-y: -48px;
   position: relative;
+   @media (max-width:999px) {
+       height: 900px;
+    } 
+     @media (max-width:399px) {
+       height: 1000px;
+    } 
 `;
 
 const BoxGreen = styled.div`
@@ -103,6 +111,9 @@ const BoxGreen = styled.div`
   border-radius: 30px 30px 0px 0px;
   position: absolute;
   bottom: 0;
+   @media (max-width:999px) {
+       height: 250px;
+    } 
 `;
 
 const Space = styled.div`
